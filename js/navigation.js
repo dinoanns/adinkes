@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       filteredSubDistricts.length === 0 &&
       filteredFacilities.length === 0
     ) {
-      results.innerHTML = `<dd class="results-state"><p class="no-result">No results found.</p></dd>`;
+      results.innerHTML = `<dd class="results-state"><p class="no-result">Tidak ada hasil.</p></dd>`;
     }
   }
 
@@ -113,7 +113,15 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create the section title
       const sectionTitle = document.createElement("dt");
       sectionTitle.classList.add("search-section");
-      sectionTitle.textContent = title;
+      // Translate section headers to Indonesian
+      const titleMap = {
+        "State": "Provinsi",
+        "District": "Kabupaten/Kota",
+        "Sub-District": "Kecamatan",
+        "Sub-district": "Kecamatan",
+        "Facility": "Fasilitas",
+      };
+      sectionTitle.textContent = titleMap[title] || title;
 
       // Append to results
       results.appendChild(sectionTitle);

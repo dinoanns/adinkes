@@ -1,1 +1,8 @@
-.DS_store
+.DS_Store
+.cursor/
+
+# Konfigurasi sensitif — jangan di-push
+conf/conf.php
+
+# Upload sementara
+*.tmp

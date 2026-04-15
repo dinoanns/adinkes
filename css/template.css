@@ -324,7 +324,7 @@ main {
     }
   }
 
-  & a {
+  & a:not(.faskes-tab) {
     color: #fff;
     display: inline-block;
     padding: 4px 2px;

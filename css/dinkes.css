@@ -1,0 +1,312 @@
+
+.banner {
+  background: #0075eb;
+  overflow: visible;
+  position: relative;
+  z-index: 9998;
+}
+
+.banner .banner-body {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0;
+}
+
+.dk-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.banner h1 {
+  font-size: 1.4rem !important;
+  font-weight: 800;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.banner h1 span:first-child {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.banner h1 .dk-brand-sub {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 2px 0 0 0;
+  padding: 0;
+}
+
+.region-search {
+  color: #1c2b3a !important;
+}
+.region-search::placeholder {
+  color: #888 !important;
+}
+
+/* ── Faskes nav wrapper ──────────────────────────────────────────────────── */
+.faskes-nav {
+  position: relative;
+  grid-column: 1 / span 2;
+  order: 1;
+  z-index: 9999;
+}
+@media screen and (min-width: 660px) {
+  .faskes-nav { grid-column: 1; order: 0; }
+}
+
+/* ── Faskes tab bar ─────────────────────────────────────────────────────── */
+.faskes-nav .faskes-tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Specificity: 0,2,0 — beats .banner a (0,1,1) */
+.faskes-nav .faskes-tab {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.faskes-nav .faskes-tab:hover {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border-color: rgba(255,255,255,0.7);
+  text-decoration: none;
+}
+
+.faskes-nav .faskes-tab.faskes-tab-active {
+  background: #fff;
+  color: #0075eb;
+  border-color: #fff;
+}
+
+/* removed: moved to .tab-main-label::after */
+
+/* Tab badge: nama filter aktif yang sedang dipilih */
+.faskes-tab {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.tab-main-label {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.tab-main-label::after {
+  content: ' ▾';
+  font-size: 0.75em;
+  opacity: 0.7;
+  margin-left: 2px;
+}
+
+.faskes-nav a.faskes-tab .tab-main-label::after {
+  content: '';
+}
+
+.tab-filter-badge {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1.2;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 1px;
+  opacity: 0.8;
+}
+
+.faskes-tab:not(.faskes-tab-active) .tab-filter-badge {
+  color: rgba(255,255,255,0.85);
+}
+
+.faskes-tab-active .tab-filter-badge {
+  color: #0469cc;
+}
+
+/* ── Panel dropdown (Puskesmas / RSUD) ──────────────────────────────────── */
+.nav-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  bottom: auto !important;
+  left: 0;
+  z-index: 9999;
+  width: 280px;
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.nav-panel .nav-list {
+  padding: 4px 0;
+}
+
+.nav-panel .nav-list a {
+  display: block;
+  padding: 7px 16px 7px 16px;
+  color: #1a2b3c;
+  font-size: 0.88rem;
+  text-decoration: none;
+  margin: 0;
+}
+
+.nav-panel .nav-list a:hover {
+  background: #f0f7ff;
+  color: #0075eb;
+  text-decoration: none;
+}
+
+.nav-panel .nav-list a[aria-current="page"] {
+  background: #e8f3ff;
+  color: #0075eb;
+  font-weight: 700;
+  border-left: 3px solid #0075eb;
+  padding-left: 13px;
+}
+
+/* Search input di dalam panel */
+.nav-panel-search {
+  padding: 10px 12px 6px;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-panel-search input {
+  width: 100%;
+  border: 1px solid #dde3ea;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.83rem;
+  outline: none;
+  color: #1a2b3c;
+  background: #f7f9fb;
+  box-sizing: border-box;
+}
+
+.nav-panel-search input:focus {
+  border-color: #0075eb;
+  background: #fff;
+}
+
+.nav-panel .region-national > a {
+  font-weight: 700;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 4px;
+}
+
+.nav-panel .region-state > a {
+  font-weight: 700;
+  color: #444;
+  font-size: 0.82rem;
+  padding: 8px 16px 5px;
+}
+
+.nav-panel .region-state > a:hover {
+  background: #f0f7ff;
+  color: #0075eb;
+}
+
+/* label non-klikable hanya untuk panel RSUD/Puskesmas kota header */
+#panel-rsud .region-state > a,
+#panel-puskesmas .region-state > a {
+  pointer-events: none;
+  color: #888;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  padding: 8px 16px 4px;
+  background: none !important;
+}
+
+.nav-panel .region-district > a {
+  padding-left: 28px;
+  font-weight: 400;
+}
+
+.nav-panel .region-village > a {
+  padding-left: 42px;
+  font-weight: 400;
+  font-size: 0.83rem;
+  color: #555;
+}
+
+.nav-panel .region-village > a:hover {
+  color: #0075eb;
+}
+
+.nav-panel .nested { display: block; }
+.nav-panel .caret  { display: none; }
+
+/* Nested ul dalam panel-semua */
+#panel-semua .region-state > ul,
+#panel-semua .region-district > ul {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Label pemisah seksi (RSUD / Puskesmas) di panel gabungan */
+.nav-panel .nav-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #999;
+  padding: 8px 16px 3px;
+  border-top: 1px solid #f0f0f0;
+  list-style: none;
+  margin-top: 2px;
+}
+
+.nav-panel .nav-section-label:first-child {
+  border-top: none;
+  margin-top: 0;
+}
+
+/* Indikator aktif untuk item district/village */
+.nav-panel .region-district > a[aria-current="page"],
+.nav-panel .region-village > a[aria-current="page"] {
+  padding-left: 25px;
+}
+
+.nav-panel .region-village > a[aria-current="page"] {
+  padding-left: 39px;
+}

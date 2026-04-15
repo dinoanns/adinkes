@@ -1,0 +1,39 @@
+RewriteEngine On
+RewriteBase /adinkes/
+
+# ── Routing ──────────────────────────────────────────────────────────────────
+RewriteRule ^$                media.php           [L]
+RewriteRule ^page-view$       media.php           [L]
+RewriteRule ^filter-heatmap$  filter_heatmap.php  [L]
+RewriteRule ^filter-region$   filter_region.php   [L]
+
+# ── Blokir akses langsung ke file sensitif ───────────────────────────────────
+<FilesMatch "^(conf|libs/aes-encrypt)">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "\.(sql|md|gitignore|DS_Store)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# ── Blokir directory listing ──────────────────────────────────────────────────
+Options -Indexes
+
+# ── Cache static assets ───────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css             "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType image/png            "access plus 1 month"
+    ExpiresByType application/json     "access plus 1 day"
+</IfModule>
+
+# ── Blokir akses ke file backend admin dari luar ─────────────────────────────
+<FilesMatch "^(import_csv|proses_indikator)\.php$">
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.1
+    Allow from ::1
+</FilesMatch>
