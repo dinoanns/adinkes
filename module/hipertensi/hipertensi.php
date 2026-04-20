@@ -123,7 +123,7 @@ switch (isset($url['act']) ? $url['act'] : '') {
           <div class="body">
             <div class="figures">
               <div>
-                <p class="large-num under-care" id="ht-total-pasien"><span class="ht-skeleton" style="display:inline-block;width:80px;height:1.5em;">&nbsp;</span></p>
+                <p class="large-num bp-controlled" id="ht-total-pasien"><span class="ht-skeleton" style="display:inline-block;width:80px;height:1.5em;">&nbsp;</span></p>
                 <div class="detail">
                   <p class="text-grey">dari <span class="registrations" id="ht-terdaftar-kum">&nbsp;</span></p>
                 </div>
@@ -146,7 +146,7 @@ switch (isset($url['act']) ? $url['act'] : '') {
           </div>
           <div class="body">
             <div class="figures">
-              <p class="large-num twelve-month-ltfu" id="ht-pct-ltfu12"><span class="ht-skeleton" style="display:inline-block;width:60px;height:1.5em;">&nbsp;</span></p>
+              <p class="large-num bp-uncontrolled" id="ht-pct-ltfu12"><span class="ht-skeleton" style="display:inline-block;width:60px;height:1.5em;">&nbsp;</span></p>
               <div class="detail" id="ht-ltfu12-detail">&nbsp;</div>
             </div>
             <div class="chart"><canvas id="ltfu12Months"></canvas></div>
@@ -167,7 +167,7 @@ switch (isset($url['act']) ? $url['act'] : '') {
           <div class="body">
             <div class="figures">
               <div>
-                <p class="large-num" style="color:#34AEA0" id="ht-pct-skrining"><span class="ht-skeleton" style="display:inline-block;width:60px;height:1.5em;">&nbsp;</span></p>
+                <p class="large-num three-month-ltfu" id="ht-pct-skrining"><span class="ht-skeleton" style="display:inline-block;width:60px;height:1.5em;">&nbsp;</span></p>
                 <div class="detail" id="ht-skrining-detail">&nbsp;</div>
               </div>
             </div>
@@ -248,9 +248,9 @@ if (tblRegions) tblRegions.addEventListener('afterSort', reanchorSubRows);
               <div class="ht-skeleton" style="height:180px;width:100%;border-radius:4px;">&nbsp;</div>
             </div>
             <div class="key">
-              <div class="key-text"><span class="key-color-box bp-controlled-bg"></span> TD terkontrol &lt;140/90</div>
-              <div class="key-text"><span class="key-color-box bp-uncontrolled-bg"></span> TD tidak terkontrol</div>
-              <div class="key-text"><span class="key-color-box three-month-ltfu-bg"></span> Tidak berkunjung 3 bulan</div>
+              <div class="key-text"><span class="key-color-box kohort-1"></span> TD terkontrol &lt;140/90</div>
+              <div class="key-text"><span class="key-color-box kohort-2"></span> TD tidak terkontrol</div>
+              <div class="key-text"><span class="key-color-box kohort-3"></span> Tidak berkunjung 3 bulan</div>
             </div>
           </div>
         </div>
@@ -261,7 +261,7 @@ if (tblRegions) tblRegions.addEventListener('afterSort', reanchorSubRows);
       <div class="card">
         <div class="heading">
           <h3>Usia dan jenis kelamin pasien hipertensi dalam perawatan</h3>
-          <p><span class="under-care" id="ht-usia-sub">&nbsp;</span></p>
+          <p><span class="under-care" id="ht-usia-sub"><strong>&nbsp;</strong></span></p>
         </div>
         <div class="body">
           <div class="table-container">
@@ -277,7 +277,7 @@ if (tblRegions) tblRegions.addEventListener('afterSort', reanchorSubRows);
                   </tr>
                 </thead>
                 <tbody id="ht-usia-body">
-                  <tr><td colspan="4" style="text-align:center;padding:2rem;color:#aaa;">Memuat data…</td></tr>
+                  <tr><td colspan="4" style="text-align:center;padding:2rem;color:#333;">Memuat data…</td></tr>
                 </tbody>
               </table>
             </div>
@@ -331,15 +331,15 @@ if (tblRegions) tblRegions.addEventListener('afterSort', reanchorSubRows);
 
         html('ht-bp-terkontrol', fmt(d.bp_terkontrol) + ' pasien');
         txt('ht-pct-terkontrol', d.pct_terkontrol + '%');
-        html('ht-num-terkontrol', fmt(d.bp_terkontrol) + ' pasien dengan TD &lt;140/90');
+        html('ht-num-terkontrol', '<strong>' + fmt(d.bp_terkontrol) + '</strong> pasien dengan TD &lt;140/90');
         txt('ht-pct-tidak', d.pct_tidak + '%');
-        html('ht-num-tidak', fmt(d.bp_tidak) + ' pasien dengan TD &ge;140/90');
+        html('ht-num-tidak', '<strong>' +  fmt(d.bp_tidak) + '</strong> pasien dengan TD &ge;140/90');
         txt('ht-pct-ltfu3', d.pct_ltfu3 + '%');
-        html('ht-num-ltfu3', fmt(d.ltfu_3bln) + ' pasien tanpa kunjungan');
+        html('ht-num-ltfu3', '<strong>' +  fmt(d.ltfu_3bln) + '</strong> pasien tanpa kunjungan');
         txt('ht-pct-ltfu12', d.pct_ltfu12 + '%');
         html('ht-ltfu12-detail',
-            '<p>' + fmt(d.ltfu_12bln) + ' pasien tanpa kunjungan 12 bulan</p>' +
-            '<p class="text-grey">dari <span class="registrations">' + fmt(d.terdaftar_alltime || 0) + ' pasien terdaftar kumulatif</span></p>');
+            '<p> <strong>' + fmt(d.ltfu_12bln) + '</strong> pasien tanpa kunjungan 12 bulan</p>' +
+            '<p class="text-grey">dari <span class="registrations">' + '<strong>' + fmt(d.terdaftar_alltime || 0) + '</strong> pasien terdaftar kumulatif</span></p>');
 
         html('ht-hasil-sub', 'Hasil untuk ' + fmt(d.terdaftar_den || 0) + ' pasien (terdaftar sebelum 3 bulan lalu)');
         txt('ht-label-3bln', '· ' + d.label_3bln);
@@ -347,12 +347,12 @@ if (tblRegions) tblRegions.addEventListener('afterSort', reanchorSubRows);
         txt('ht-tbl-bln-header', d.label_bulan);
 
         html('ht-total-pasien', fmt(d.total_pasien));
-        html('ht-terdaftar-kum', fmt(d.terdaftar_kumulatif) + ' pasien dalam perawatan (12 bln)');
+        html('ht-terdaftar-kum', '<strong>' + fmt(d.terdaftar_kumulatif) + '</strong> pasien dalam perawatan (12 bln)');
 
         txt('ht-pct-skrining', d.pct_skrining + '%');
         html('ht-skrining-detail',
-            '<p>' + fmt(d.skrining_bln) + ' pasien diskrining pada ' + d.label_bulan + '</p>' +
-            '<p class="text-grey">dari ' + fmt(d.total_pasien) + ' dalam perawatan</p>');
+            '<p> <strong>' + fmt(d.skrining_bln) + '</strong> pasien diskrining pada ' + d.label_bulan + '</p>' +
+            '<p class="text-grey">dari <span class="registrations">' + '<strong>' +  fmt(d.total_pasien) + '</strong> dalam perawatan</span></p>');
 
         // Kaskade: Level1=semua terdaftar (all-time), Level2=dalam perawatan (12mo), Level3=terkontrol (3mo)
         var _hasData = (d.terdaftar_alltime || 0) > 0;
@@ -360,19 +360,19 @@ if (tblRegions) tblRegions.addEventListener('afterSort', reanchorSubRows);
             '<div class="coverage-column">' +
               '<div class="coverage-bar"><div class="coverage-bar-fill registrations-bg" style="height:' + (_hasData ? '100' : '0') + '%">' +
                 '<p class="coverage-number registrations">' + (_hasData ? '100' : '0') + '%</p></div></div>' +
-              '<p>' + fmt(d.terdaftar_alltime || 0) + '</p>' +
+              '<p><strong>' + fmt(d.terdaftar_alltime || 0) + '</strong></p>' +
               '<p class="text-grey label-small">Pasien terdaftar kumulatif</p>' +
             '</div>' +
             '<div class="coverage-column">' +
               '<div class="coverage-bar"><div class="coverage-bar-fill under-care-bg" style="height:' + d.pct_perawatan + '%">' +
                 '<p class="coverage-number under-care">' + d.pct_perawatan + '%</p></div></div>' +
-              '<p>' + fmt(d.terdaftar_kumulatif) + '</p>' +
+              '<p><strong>' + fmt(d.terdaftar_kumulatif) + '</strong></p>' +
               '<p class="text-grey label-small">Pasien dalam perawatan (12 bln)</p>' +
             '</div>' +
             '<div class="coverage-column">' +
               '<div class="coverage-bar"><div class="coverage-bar-fill bp-controlled-bg" style="height:' + d.pct_terkontrol_pop + '%">' +
                 '<p class="coverage-number bp-controlled">' + d.pct_terkontrol_pop + '%</p></div></div>' +
-              '<p>' + fmt(d.bp_terkontrol) + '</p>' +
+              '<p><strong>' + fmt(d.bp_terkontrol) + '</strong></p>' +
               '<p class="text-grey label-small">Pasien dengan TD terkontrol</p>' +
             '</div>');
 
@@ -405,8 +405,8 @@ if (tblRegions) tblRegions.addEventListener('afterSort', reanchorSubRows);
         rows.forEach(function(r) {
             tbody += '<tr>' +
                 '<th style="border-right:0">' + r[0] + '</th>' +
-                '<td class="text-right"><div style="border-radius:3px;padding:4px 8px;color:rgba(0,0,0,0.6);background:Thistle;width:' + r[4] + '%;display:inline-block;">' + r[1] + '%</div></td>' +
-                '<td style="border-right:0"><div style="border-radius:3px;padding:4px 8px;color:rgba(0,0,0,0.6);background:LightSteelBlue;width:' + r[5] + '%;display:inline-block;">' + r[2] + '%</div></td>' +
+                '<td class="text-right"><div style="border-radius:3px;padding:4px 8px;color:rgba(0,0,0,0.6);background:rgba(42,143,130,0.6);width:' + r[4] + '%;display:inline-block;">' + r[1] + '%</div></td>' +
+                '<td style="border-right:0"><div style="border-radius:3px;padding:4px 8px;color:rgba(0,0,0,0.6);background:rgba(36,85,115,0.6);width:' + r[5] + '%;display:inline-block;">' + r[2] + '%</div></td>' +
                 '<td style="border-left:0" class="text-right">' + r[3] + '%</td>' +
                 '</tr>';
         });
@@ -446,9 +446,9 @@ if (tblRegions) tblRegions.addEventListener('afterSort', reanchorSubRows);
             var lf  = tot > 0 ? Math.round(kh.ltfu3 / tot * 100) : 0;
             khtml += '<div class="cohort-quarter">' +
                 '<div class="cohort-bar">' +
-                  '<div class="segment bp-controlled-bg"    style="height:' + ok + '%">' + ok + '%</div>' +
-                  '<div class="segment bp-uncontrolled-bg"  style="height:' + no + '%">' + no + '%</div>' +
-                  '<div class="segment three-month-ltfu-bg" style="height:' + lf + '%">' + lf + '%</div>' +
+                  '<div class="segment kohort-1"    style="height:' + ok + '%">' + ok + '%</div>' +
+                  '<div class="segment kohort-2"  style="height:' + no + '%">' + no + '%</div>' +
+                  '<div class="segment kohort-3" style="height:' + lf + '%">' + lf + '%</div>' +
                 '</div>' +
                 '<div class="cohort-detail"><b>' + kh.label + '</b> ' + fmt(tot) + ' pasien</div>' +
                 '</div>';

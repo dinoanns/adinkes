@@ -1,5 +1,19 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
 :root {
-  --system-ui: system-ui, Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 html {
@@ -32,16 +46,18 @@ h1 {
   font-size: 2rem;
   font-weight: bold;
   @media screen and (min-width: 880px) {
-    font-size: 3rem;
+    /* font-size: 3rem; */
+    font-size: 36px;
   }
 }
 
 h2.columns-header {
   font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 0.8rem;
+  /* text-transform: uppercase; */
+  /* letter-spacing: 0.1rem; */
+  /* color: rgba(0, 0, 0, 0.5); */
+  /* font-size: 0.8rem; */
+  font-size: 16px;
 }
 
 aside h2 {
@@ -338,8 +354,8 @@ main {
 
 .link-dashboards {
   font-size: 0.9rem;
-  margin: 0 0 2rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  margin: 100px 0 2rem 0;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.15); */
 
   & ul {
     display: flex;
@@ -352,15 +368,15 @@ main {
     max-width: 1600px;
   }
   & li {
-    padding: 6px 0 3px;
+    padding: 6px 10px 3px;
     display: block;
   }
   & li.active-link {
-    border-bottom: 3px solid cornflowerblue;
+    border-bottom: 3px solid #2a8f82;
   }
   & a {
     color: #555;
-    padding: 6px 14px;
+    padding: 6px 0px;
     white-space: nowrap;
     display: block;
     border-radius: 6px;
@@ -368,10 +384,11 @@ main {
   }
   & li.active-link a {
     color: #000;
+    font-weight: bold;
   }
   & a:hover {
     text-decoration: none;
-    background: rgba(0, 0, 0, 0.075);
+    /* background: rgba(0, 0, 0, 0.075); */
   }
 }
 
@@ -401,7 +418,7 @@ main {
   padding: 16px 20px 20px;
 
   background: #ffffff;
-  border: 1px solid #cbcbcb;
+  /* border: 1px solid #cbcbcb; */
   border-radius: 8px;
 
   &&.blank {
@@ -425,24 +442,29 @@ main {
   }
 
   & h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
+    /* font-size: 1.2rem; */
+    font-size: 18px;
+    font-weight: 600;
     margin-right: 24px;
   }
 
   & h4 {
     font-size: 1rem;
     font-weight: 700;
-    margin-top: 18px;
+    margin: 18px 0;
+    height: 50px;
   }
 
   .figures {
-    margin: 12px 0 0 0;
+    /* margin: 12px 0 0 0; */
+    margin: 0px 0 15px 0;
 
     & .large-num {
-      font-size: 2rem;
+      /* font-size: 2rem; */
+      font-size: 40px;
       font-weight: 700;
-      margin: 0;
+      /* margin: 0; */
+      margin: 15px 0;
     }
 
     & .detail p {
@@ -855,20 +877,20 @@ table {
 }
 
 .bp-controlled {
-  color: #3bb231;
+  color: #0f652e;
 }
 .bp-controlled-dark {
   color: #096301;
 }
 .bp-controlled-bg {
-  background: #3bb231;
+  background: #0f652e;
 }
 .bp-controlled-dark-bg {
   background: #096301;
 }
 
 .bp-uncontrolled {
-  color: #eeab00;
+  color: #218267;
 }
 
 .bp-uncontrolled-bg {
@@ -883,7 +905,7 @@ table {
 }
 
 .three-month-ltfu {
-  color: #ed6300;
+  color: #2a8f82;
 }
 .three-month-ltfu-bg {
   background: #ed6300;
@@ -897,17 +919,17 @@ table {
 }
 
 .under-care {
-  color: #b51bdc;
+  color: #2a8f82;
 }
 .under-care-bg {
-  background: #b51bdc;
+  background: #2a8f82;
 }
 
 .registrations {
-  color: #007ee4;
+  color: #245573;
 }
 .registrations-bg {
-  background: #007ee4;
+  background: #245573;
 }
 
 .step-one-drugs {
@@ -1208,4 +1230,16 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
       text-align: center;
     }
   }
+}
+
+.kohort-1 {
+  background: #0f652e;
+}
+
+.kohort-2 {
+  background: #218267;
+}
+
+.kohort-3 {
+  background: #2e9690;
 }
