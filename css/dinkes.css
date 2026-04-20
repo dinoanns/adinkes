@@ -1,9 +1,16 @@
 
 .banner {
-  background: #0075eb;
+  /* background: #0075eb; */
   overflow: visible;
   position: relative;
   z-index: 9998;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  width: 100%;
+  box-shadow: 0px 1px 10px #dcdcdc;
 }
 
 .banner .banner-body {
@@ -79,12 +86,14 @@
   display: inline-flex;
   align-items: center;
   background: transparent;
-  color: rgba(255,255,255,0.8);
-  border: 1.5px solid rgba(255,255,255,0.4);
-  border-radius: 20px;
+  /* color: rgba(255,255,255,0.8); */
+  color: #333;
+  /* border: 1.5px solid rgba(255,255,255,0.4); */
+  /* border-radius: 20px; */
   padding: 5px 14px;
-  font-size: 0.82rem;
-  font-weight: 600;
+  /* font-size: 0.82rem; */
+  font-size: 16px;
+  font-weight: 700;
   font-family: inherit;
   cursor: pointer;
   text-decoration: none;
@@ -96,16 +105,17 @@
 }
 
 .faskes-nav .faskes-tab:hover {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-  border-color: rgba(255,255,255,0.7);
+  /* background: rgba(255,255,255,0.2); */
+  color: #333;
+  /* border-color: rgba(255,255,255,0.7); */
   text-decoration: none;
 }
 
 .faskes-nav .faskes-tab.faskes-tab-active {
-  background: #fff;
-  color: #0075eb;
-  border-color: #fff;
+  /* background: #fff; */
+  color: #2a8f82;
+  font-weight: bold;
+  /* border-color: #fff; */
 }
 
 /* removed: moved to .tab-main-label::after */

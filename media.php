@@ -172,7 +172,7 @@ while ($rg = fetch_array($res_gab)) {
               <span class="tab-filter-badge"><?= htmlspecialchars($_aktif_display) ?></span>
               <?php endif; ?>
             </button>
-            <span style="width:1px;background:rgba(255,255,255,0.3);margin:4px 2px;align-self:stretch"></span>
+            <span style="width:0px;background:rgba(67, 67, 67, 0.5);margin:4px 2px;align-self:stretch"></span>
             <a class="faskes-tab<?= $page === 'heatmap' ? ' faskes-tab-active' : '' ?>"
                href="page-view?<?= paramEncrypt('module=heatmap&act=dashboard') ?>">
               <span class="tab-main-label">Peta Sebaran</span>
@@ -377,7 +377,9 @@ while ($rg = fetch_array($res_gab)) {
         <!-- Logo + Judul institusi -->
         <div class="dk-brand-wrap">
           <img src="img/jakarta.png" alt="Logo DKI Jakarta" style="height:52px;width:auto;flex-shrink:0;">
-          <img src="img/dinkes.png" alt="Logo Dinkes DKI" style="height:52px;width:auto;flex-shrink:0;">
+          <img src="img/jaksehat.png" alt="Logo Dinkes DKI" style="height: 40px;;width:auto;flex-shrink:0;">
+          <img src="img/rsuj.png" alt="Logo Dinkes DKI" style="height:40px;width:auto;flex-shrink:0;">
+          <img src="img/puskesmas.png" alt="Logo Dinkes DKI" style="height:40px;width:auto;flex-shrink:0;">
         </div>
       </div>
     </div>
